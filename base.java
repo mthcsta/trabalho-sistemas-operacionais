@@ -1,5 +1,3 @@
-package base;
-
 import java.util.Scanner;
 
 import java.util.Random;
@@ -13,8 +11,6 @@ public class base {
     
      
     public static void main(String[] args) {
-      
-     
 
      int[] tempo_execucao = new int[n_processos];
      int[] tempo_chegada = new int[n_processos];
@@ -83,13 +79,13 @@ public class base {
         aleatorio =  teclado.nextInt();
 
         for (int i = 0; i < n_processos; i++) {
-            //Popular Processos Aleatorio
+            //Popular helpers.Processos Aleatorio
             if (aleatorio == 1){
                 tempo_execucao[i] = random.nextInt(10)+1;
                 tempo_chegada[i] = random.nextInt(10)+1;
                 prioridade[i] = random.nextInt(15)+1;
             }
-            //Popular Processos Manual
+            //Popular helpers.Processos Manual
             else {
                 System.out.print("Digite o tempo de execução do processo["+i+"]:  ");
                 tempo_execucao[i] = teclado.nextInt();
@@ -108,7 +104,7 @@ public class base {
     public static void imprime_processos(int[] tempo_execucao, int[] tempo_espera, int[] tempo_restante, int[] tempo_chegada,  int []prioridade){
         //Imprime lista de processos
       for (int i = 0; i < n_processos; i++) {
-        System.out.println("Processo["+i+"]: tempo_execucao="+ tempo_execucao[i] + " tempo_restante="+tempo_restante[i] + " tempo_chegada=" + tempo_chegada[i] + " prioridade =" +prioridade[i]);
+        System.out.println("helpers.Processo["+i+"]: tempo_execucao="+ tempo_execucao[i] + " tempo_restante="+tempo_restante[i] + " tempo_chegada=" + tempo_chegada[i] + " prioridade =" +prioridade[i]);
     }
     }
 
