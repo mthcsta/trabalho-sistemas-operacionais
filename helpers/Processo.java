@@ -15,6 +15,14 @@ public class Processo {
         this.tempoRestante = tempoRestante;
     }
 
+    public Processo(int tempoExecucao, int tempoChegada, int prioridade, int tempoRestante) {
+        this.tempoExecucao = tempoExecucao;
+        this.tempoChegada = tempoChegada;
+        this.prioridade = prioridade;
+        this.tempoEspera = 0;
+        this.tempoRestante = tempoRestante;
+    }
+
     public int getTempoExecucao() {
         return tempoExecucao;
     }
@@ -61,10 +69,10 @@ public class Processo {
     }
 
     public String toString() {
-        return String.format("tempo_execucao=\"%d\"" +
-                "tempo_restante=\"%d\"" +
-                "tempo_chegada=\"%d\"" +
-                "prioridade =\"%d\"",
+        return String.format("tempo_execucao=\"%d\" " +
+                "tempo_restante=\"%d\" " +
+                "tempo_chegada=\"%d\" " +
+                "prioridade =\"%d\" ",
                 tempoExecucao,
                 tempoRestante,
                 tempoChegada,
