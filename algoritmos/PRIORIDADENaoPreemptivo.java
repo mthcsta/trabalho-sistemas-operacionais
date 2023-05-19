@@ -3,13 +3,9 @@ package algoritmos;
 import helpers.Processo;
 import helpers.Processos;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+public class PRIORIDADENaoPreemptivo extends BaseAlgoritmo {
 
-public class FCFS extends BaseAlgoritmo {
-
-    public FCFS(Processos processos) {
+    public PRIORIDADENaoPreemptivo(Processos processos) {
         this.processos = processos;
     }
 
@@ -17,9 +13,16 @@ public class FCFS extends BaseAlgoritmo {
     public int getProximoProcessoIndice(Processos processos, int tempo) {
         int proximoProcessoIndice = -1;
         for (int indice = 0; indice < processos.getProcessos().length; indice++) {
-            if (processos.getProcessoPorIndice(indice).getTempoRestante() > 0) {
+            Processo processoAtual = processos.getProcessoPorIndice(indice);
+            if (processoAtual.getTempoRestante() > 0
+                    && tempo >= processoAtual.getTempoChegada()
+                    && (
+                    proximoProcessoIndice == -1 || (
+                            processos.getProcessoPorIndice(proximoProcessoIndice).getPrioridade() < processoAtual.getPrioridade()
+                    )
+            )
+            ) {
                 proximoProcessoIndice = indice;
-                break;
             }
         }
         if (proximoProcessoIndice != -1) {
@@ -41,7 +44,6 @@ public class FCFS extends BaseAlgoritmo {
 
     @Override
     public void setTempoEspera(Processo processo, int tempo) {
-        processo.setTempoEspera(tempo - 1);
+        processo.setTempoEspera(tempo - processo.getTempoChegada());
     }
-
 }
