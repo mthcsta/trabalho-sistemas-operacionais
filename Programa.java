@@ -1,7 +1,9 @@
 import algoritmos.FCFS;
-import algoritmos.PRIORIDADE;
-import algoritmos.RoundRobin;
-import algoritmos.SJF;
+import algoritmos.PRIORIDADENaoPreemptivo;
+import algoritmos.PRIORIDADEPreemptivo;
+import algoritmos.SJFPreemptivo;
+import algoritmos.SJFNaoPreemptivo;
+import algoritmos.ROUNDROBIN;
 import helpers.Processos;
 
 import java.util.Scanner;
@@ -29,19 +31,19 @@ public class Programa {
                     System.out.println("Finalizado!");
                     break;
                 case 2:
-                    //SJF::test(true, processos);
+                    new SJFPreemptivo(processos).teste();
                     break;
                 case 3:
-                    new SJF(processos).naoPreemptivo();
+                    new SJFNaoPreemptivo(processos).teste();
                     break;
                 case 4:
-                    //PRIORIDADE::test(true, processos);
+                    new PRIORIDADEPreemptivo(processos).teste();
                     break;
                 case 5:
-                    //PRIORIDADE::test(false, processos);
+                    new PRIORIDADENaoPreemptivo(processos).teste();
                     break;
                 case 6:
-                    //RoundRobin::test(processos);
+                    new ROUNDROBIN(processos).teste();
                     break;
                 case 7:
                     processos.imprimeProcessos();
