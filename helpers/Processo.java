@@ -15,11 +15,19 @@ public class Processo {
         this.tempoRestante = tempoRestante;
     }
 
+    public Processo(Processo processo) {
+        this.tempoExecucao = processo.getTempoExecucao();
+        this.tempoChegada = processo.getTempoChegada();
+        this.prioridade = processo.getPrioridade();
+        this.tempoEspera = processo.getTempoEspera();
+        this.tempoRestante = processo.getTempoRestante();
+    }
+
     public Processo(int tempoExecucao, int tempoChegada, int prioridade, int tempoRestante) {
         this.tempoExecucao = tempoExecucao;
         this.tempoChegada = tempoChegada;
         this.prioridade = prioridade;
-        this.tempoEspera = 0;
+        this.tempoEspera = -1;
         this.tempoRestante = tempoRestante;
     }
 
@@ -77,5 +85,9 @@ public class Processo {
                 tempoRestante,
                 tempoChegada,
                 prioridade);
+    }
+
+    public Processo getClone() {
+        return new Processo(this);
     }
 }

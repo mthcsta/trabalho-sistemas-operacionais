@@ -1,5 +1,6 @@
 package helpers;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,6 +9,10 @@ public class Processos implements Cloneable {
 
     public Processos(int numeroDeProcessos) {
         this.processos = new Processo[numeroDeProcessos];
+    }
+
+    public Processos(Processo[] processos) {
+        this.processos = processos;
     }
 
     public Processo getProcessoPorIndice(int indice) {
@@ -21,9 +26,14 @@ public class Processos implements Cloneable {
         Scanner teclado = new Scanner (System.in);
 
         System.out.print("Será aleatório?:  ");
-        aleatorio = 2; //teclado.nextInt();
+        aleatorio = teclado.nextInt();
 
-        if (aleatorio == 2) {
+        if (aleatorio == 3) {
+            this.processos[0] = new Processo(10, 6, 2, 10);
+            this.processos[1] = new Processo(1, 3, 10, 1);
+            this.processos[2] = new Processo(10, 9, 10, 10);
+        }
+        else if (aleatorio == 2) {
             this.processos[0] = new Processo(10, 3, 9, 10);
             this.processos[1] = new Processo(7, 7, 7, 7);
             this.processos[2] = new Processo(3, 2, 15, 3);
@@ -65,11 +75,11 @@ public class Processos implements Cloneable {
     }
 
     public Processos getClone() {
-        try {
-            return (Processos) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new RuntimeException(e);
+        Processo[] processos1 = new Processo[processos.length];
+        for (int indice = 0; indice < processos.length; indice++) {
+            processos1[indice] = processos[indice].getClone();
         }
+        return new Processos(processos1);
     }
 
     public boolean hasProcessoIndice(int processoIndice) {
@@ -88,6 +98,6 @@ public class Processos implements Cloneable {
             System.out.printf("Processo[%d]: tempo_espera=%d\n", indice, tempoEspera);
         }
         tempoMedio /= processos.length;
-        System.out.printf("Tempo médio de espera: %f", tempoMedio);
+        System.out.printf("Tempo médio de espera: %f\n", tempoMedio);
     }
 }
