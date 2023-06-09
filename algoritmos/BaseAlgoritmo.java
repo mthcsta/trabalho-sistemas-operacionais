@@ -19,7 +19,7 @@ public abstract class BaseAlgoritmo {
         int indiceProcessoAnterior = -1;
         for (int tempo = 1; hasProximoProcesso(processos1); tempo++) {
             int indiceProcessoAtual = getProximoProcessoIndice(processos1, tempo);
-            if (indiceProcessoAtual != indiceProcessoAnterior && processos1.getProcessoPorIndice(indiceProcessoAtual).getTempoEspera() == -1) {
+            if (indiceProcessoAtual != -1 && indiceProcessoAtual != indiceProcessoAnterior && processos1.getProcessoPorIndice(indiceProcessoAtual).getTempoEspera() == -1) {
                 setTempoEspera(processos1.getProcessoPorIndice(indiceProcessoAtual), tempo);
             }
             indiceProcessoAnterior = indiceProcessoAtual;
@@ -36,12 +36,6 @@ public abstract class BaseAlgoritmo {
                         processos1.getProcessoPorIndice(indiceProcessoAtual).getTempoRestante()
                 );
             }
-
-            for (Processo processo : processos1.getProcessos()) {
-                System.out.printf("prioridade=%d ", processo.getPrioridade());
-            }
-            System.out.println();
-
         }
 
         processos1.imprimeEstatisticas();
