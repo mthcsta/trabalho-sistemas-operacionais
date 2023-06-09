@@ -1,11 +1,11 @@
 package helpers;
 
 public class Processo {
-    int tempoExecucao;
-    int tempoChegada;
-    int prioridade;
-    int tempoEspera;
-    int tempoRestante;
+    private int tempoExecucao;
+    private int tempoChegada;
+    private int prioridade;
+    private int tempoEspera;
+    private int tempoRestante;
 
     public Processo(int tempoExecucao, int tempoChegada, int prioridade, int tempoEspera, int tempoRestante) {
         this.tempoExecucao = tempoExecucao;

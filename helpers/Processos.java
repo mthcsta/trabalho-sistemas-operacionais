@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Processos implements Cloneable {
-    Processo[] processos;
+    private Processo[] processos;
 
     public Processos(int numeroDeProcessos) {
         this.processos = new Processo[numeroDeProcessos];
