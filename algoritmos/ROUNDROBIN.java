@@ -57,16 +57,6 @@ public class ROUNDROBIN extends BaseAlgoritmo {
     }
 
     @Override
-    public boolean hasProximoProcesso(Processos processos) {
-        for (Processo processo : processos.getProcessos()) {
-            if (processo.getTempoRestante() > 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
     public void setTempoEspera(Processo processo, int tempo) {
         processo.setTempoEspera(tempo);
     }

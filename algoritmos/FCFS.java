@@ -3,10 +3,6 @@ package algoritmos;
 import helpers.Processo;
 import helpers.Processos;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class FCFS extends BaseAlgoritmo {
 
     public FCFS(Processos processos) {
@@ -27,16 +23,6 @@ public class FCFS extends BaseAlgoritmo {
             proximoProcesso.setTempoRestante(proximoProcesso.getTempoRestante() - 1);
         }
         return proximoProcessoIndice;
-    }
-
-    @Override
-    public boolean hasProximoProcesso(Processos processos) {
-        for (Processo processo : processos.getProcessos()) {
-            if (processo.getTempoRestante() > 0) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override
