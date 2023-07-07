@@ -18,12 +18,12 @@ public abstract class BaseAlgoritmo {
             indiceProcessoAnterior = indiceProcessoAtual;
             if (indiceProcessoAtual == -1) {
                 System.out.printf(
-                        "tempo[%d]: nenhum processo está pronto\n",
+                        "Tempo[%d]: nenhum processo está pronto\n",
                         tempo
                 );
             } else {
                 System.out.printf(
-                        "tempo[%d]: processo[%d] restante=%d\n",
+                        "Tempo[%d]: Processo[%d] Restante = %d \n",
                         tempo,
                         indiceProcessoAtual,
                         processos1.getProcessoPorIndice(indiceProcessoAtual).getTempoRestante()
@@ -36,7 +36,14 @@ public abstract class BaseAlgoritmo {
 
     public abstract int getProximoProcessoIndice(Processos processos, int tempo);
 
-    public abstract boolean hasProximoProcesso(Processos processos);
+    public boolean hasProximoProcesso(Processos processos) {
+        for (Processo processo : processos.getProcessos()) {
+            if (processo.getTempoRestante() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public abstract void setTempoEspera(Processo processo, int tempo);
 }
