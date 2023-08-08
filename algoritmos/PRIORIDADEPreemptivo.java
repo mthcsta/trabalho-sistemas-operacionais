@@ -25,13 +25,6 @@ public class PRIORIDADEPreemptivo extends BaseAlgoritmo {
                 proximoProcessoIndice = indice;
             }
         }
-        for (Processo processo : processos.getProcessos()) {
-            if (
-                    processo.getTempoRestante() > 0
-            ) {
-                processo.setPrioridade(processo.getPrioridade() + 1);
-            }
-        }
         if (proximoProcessoIndice != -1) {
             Processo proximoProcesso = processos.getProcessoPorIndice(proximoProcessoIndice);
             proximoProcesso.setTempoRestante(proximoProcesso.getTempoRestante() - 1);
